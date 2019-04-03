@@ -100,5 +100,18 @@ class School {
 }
 
 class MiddleSchool: School {
-    var middleStudent: [index: ]
+    var middleStudent: [Student] = [Student]()
+    
+    override subscript(index: Int) -> Student {
+        print("MiddleSchool subscript")
+        return middleStudent[index]
+    }
 }
+let university: School = School()
+university.student.append(Student())
+university[0]
+
+let middle: MiddleSchool = MiddleSchool()
+middle.middleStudent.append(Student())
+middle[0]
+

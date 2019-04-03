@@ -17,12 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // main story board에서 view 생성 후 덮어쓰는 코드 story board 사용 안할시 설정에서 main interface를 지정 하지 않아야 한다/.
-        window = UIWindow(frame: UIScreen.main.bounds) // 현재 스크린의 영역의 크기를 가지고 있는 변수
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .green
         let rootViewController = ViewController()
         window?.rootViewController = rootViewController
-        window?.makeKeyAndVisible() // key window로 지정
+        window?.makeKeyAndVisible()
         
         return true
     }
