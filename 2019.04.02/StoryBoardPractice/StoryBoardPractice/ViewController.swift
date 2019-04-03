@@ -53,27 +53,25 @@ class ViewController: UIViewController {
         secondVC.imageName = segue.identifier ?? ""
     }
     
-    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-        super.performSegue(withIdentifier: identifier, sender: sender)
-        
-    }
-    
     @IBAction func unwindToFirstView(_ unwindSegue: UIStoryboardSegue) {
         let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
         if let secondVC = sourceViewController as? SecondViewController,
             let counted = animalsDict[secondVC.imageName] {
-        
+            
             animalsDict[secondVC.imageName] = counted + secondVC.plusCounting
-            print(animalsDict[secondVC.imageName] ?? 0 + secondVC.plusCounting)
             
         } else if let thirdVC = sourceViewController as?  ThirdViewController {
             
             ThirdSelectedLabel.text = thirdVC.segmentString
         }
+    }
+    
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        super.performSegue(withIdentifier: identifier, sender: sender)
         
     }
-
+    
     @IBAction func showThird(_ sender: UIButton) {
         performSegue(withIdentifier: "Third", sender: sender)
     }

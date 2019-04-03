@@ -20,12 +20,10 @@ class SecondViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         animalImageView.image = UIImage(named: imageName)
-        
     }
     
     @IBAction func plusCount(_ sender: UIButton) {
         plusCounting += 1
-        print(plusCounting)
     }
     
     /*
