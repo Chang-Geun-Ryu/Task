@@ -137,3 +137,32 @@ AlertController 에 TextField 를 추가해서 Label 의 숫자를 원하는 대
 영상 참고 텍스트 필드에 어떤 값을 입력하면 별도의 Label 에 입력된 텍스트 표시. 텍스트 필드가 활성화 되어 있을 땐 Label 의 텍스트 색상이 파란색이고, Font 크기는 40 텍스트 필드가 비활성화되면 Label 텍스트 색상이 빨간색이고, Font 크기는 20
 
 ViewController 데이터 전달 AViewController 와 BViewController 를 만들고 각각 하나의 Label 생성. AViewController 와 BViewController 를 전환할 때마다 각 Label 에 화면을 전환한 숫자 1씩 증가
+
+0402 과제
+1.
+func addTwoValues(a: Int, b: Int) -> Int {
+return a + b
+}
+let task1: Any = addTwoValues(a: 2, b: 3)
+위와 같이 task1 이라는 변수가 있을 때
+task1 + task1 의 결과가 제대로 출력되도록 할 것
+2. 스토리보드 이용할 것
+- FirstVC 에 개, 고양이, 새 라는 이름의 UIButton 3개 생성
+- SecondVC 에 UIImageView 하나와 Dismiss 를 위한 버튼 하나 생성
+- FirstVC에 있는 버튼 3개 중 하나를 누르면 그 타이틀에 맞는 이미지를 SecondVC의 ImageView 에 넣기
+(이미지는 구글링 등을 통해 활용)
+- 각 버튼별로 전환 횟수를 세서 개는 8회, 고양이는 10회, 새는 15회가 넘어서면 화면이 전환되지 않도록 막기
+- 그리고 SecondVC 에 추가로 UIButton 을 하나 더 생성하여 그 버튼을 누를 때마다 전환 횟수를 계산하는 값이 개와 고양이, 새 
+3. 클래스 매니저 과제
+- 첫번째 뷰에 레이블과 버튼을 생성하고 버튼을 통해 두번쨰 뷰로 이동.
+- 두번째 뷰에는 segmentedController 를 생성하고 선택한값을 첫번째 뷰의 레이블에 띄우세요.
+
+[ 도전 과제 ]
+1.
+let task2: Any = addTwoValues
+위와 같이 task2 라는 변수가 있을 때
+task2 + task2 의 결과가 제대로 출력되도록 할 것 (addTwoValues의 각 파라미터에는 2와 3 입력)
+2.
+class Car {}
+let values: [Any] = [0, 0.0, (2.0, Double.pi), Car(), { (str: String) -> Int in str.count }]
+위 values 변수의 각 값을 switch 문과 타입캐스팅을 이용해 출력하기
