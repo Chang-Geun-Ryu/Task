@@ -37,7 +37,6 @@ class SecondViewController: UIViewController {
     }
     
     @objc func logOutTouchUpInside(_ sender: UIButton) {
-        print(presentingViewController)
         guard let vc = presentingViewController as? UITabBarController else{
             return print("aa")
         }

@@ -13,9 +13,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var tabBarController: UITabBarController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = .white
+        
+        tabBarController = UITabBarController()
+        
+        let vc = ViewController()
+        let secondVC = SecondViewController()
+//        let second2VC = SecondViewController()
+        
+        vc.title = "친구"
+        secondVC.title = "친구추가"
+        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+       
+        let naviController = UINavigationController(rootViewController: vc)
+        
+        tabBarController?.viewControllers = [naviController, secondVC]
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
