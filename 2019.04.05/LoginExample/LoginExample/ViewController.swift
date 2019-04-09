@@ -145,7 +145,7 @@ class ViewController: UIViewController {
         secondVC.textID = id
         secondVC.view.backgroundColor = .white
         
-        present(secondVC, animated: true)
+        present(secondVC, animated: false)
     }
     
     func clearInfo() {
