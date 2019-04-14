@@ -52,11 +52,11 @@ final class TableViewMultipleSelection: UIViewController {
     tableView.addSubview(refreshControl)
   }
     @objc func randomRefresh() {
+        let beforeData = data
         data.removeAll()
         
-        for selected in tableView.indexPathsForSelectedRows! {
-            let strNum = tableView.cellForRow(at: selected)?.textLabel?.text ?? ""
-            data.append(Int(strNum)!)
+        for selected in self.tableView.indexPathsForSelectedRows! {
+            data.append(beforeData[selected.row])
         }
         
         random()
@@ -90,6 +90,8 @@ extension TableViewMultipleSelection: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         guard let num = Int(tableView.cellForRow(at: indexPath)?.textLabel?.text ?? ""),
          num > 7 else { return nil}
+        
+        
         
         return indexPath
     }
