@@ -18,7 +18,7 @@ final class TableViewAccessoryType: UIViewController {
    도전 과제)
    테이블뷰의 각 셀을 위아래로 스크롤 했다가 다시 나타낼 때, 체크 표시가 기존에 했던 곳에 정확히 다시 나타나도록 구현
    ***************************************************/
-  
+    
   override var description: String {
     return "Task 2 - AccessoryType"
   }
@@ -29,11 +29,25 @@ final class TableViewAccessoryType: UIViewController {
     "guinea_pig", "koala", "whale_shark", "whale", "duck",
     "seagull", "black_swan", "peacock", "giraffe"
   ]
+
+    var animalCheck: [String : Bool] = [:]
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    for str in animals {
+        animalCheck = [str:false]
+    }
+    
     let tableView = UITableView(frame: view.frame)
+    tableView.dataSource = self
+    tableView.delegate = self
     view.addSubview(tableView)
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellId")
+    tableView.rowHeight = 60
+    
+    
+    
   }
 }
 
@@ -45,6 +59,16 @@ extension TableViewAccessoryType: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath)
+    cell.imageView?.image = UIImage(named: animals[indexPath.row])
+    cell.accessoryType = .none
     return cell
   }
+}
+
+extension TableViewAccessoryType: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        animalCheck[animals[indexPath.row]] = animalCheck[animals[indexPath.row]] ?? false ? false : true
+        tableView.cellForRow(at: indexPath)?.accessoryType = animalCheck[animals[indexPath.row]] ?? false ? .checkmark : .none
+        return indexPath
+    }
 }
