@@ -55,11 +55,11 @@ final class TableViewMultipleSelection: UIViewController {
         let beforeData = data
         data.removeAll()
         
-        if tableView.indexPathsForSelectedRows != nil {
-            for selected in self.tableView.indexPathsForSelectedRows! {
-                data.append(beforeData[selected.row])
-            }
+        
+        for selected in self.tableView.indexPathsForSelectedRows ?? [] {
+            data.append(beforeData[selected.row])
         }
+        
         
         random()
         tableView.refreshControl?.endRefreshing()
