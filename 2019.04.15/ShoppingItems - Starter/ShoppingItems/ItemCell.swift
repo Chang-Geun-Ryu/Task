@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PhoneSellerDelegate: class {
-    func salesPhone(_ cell: ItemCell, _ seller: UILabel, _ sender: UIButton)
+    func salesPhone(_ cell: ItemCell, _ seller: UILabel)
 }
 
 
@@ -29,15 +29,6 @@ final class ItemCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        phoneImage.image = UIImage(named: imageLogo)
         contentView.addSubview(phoneImage)
         label.text = modelName
         print(modelName)
@@ -49,7 +40,6 @@ final class ItemCell: UITableViewCell {
         contentView.addSubview(button)
         
         contentView.addSubview(saleCount)
-        
         
         // Auto layout
         phoneImage.translatesAutoresizingMaskIntoConstraints = false
@@ -80,8 +70,23 @@ final class ItemCell: UITableViewCell {
         button.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+    }
+    
+    func setCell(_ image: String, _ name: String, counting: String, stockMax: Int) {
+        self.phoneImage.image = UIImage(named: image)
+        self.label.text = name
+        self.saleCount.text = counting
+        self.stockMax = stockMax
+    }
+    
     @objc func sale(_ sender: UIButton){
         // 버튼 클릭시 TableView에 작업을 대리하여 시킴
-        delegate?.salesPhone(self, saleCount, sender)
+        delegate?.salesPhone(self, saleCount)
     }
 }

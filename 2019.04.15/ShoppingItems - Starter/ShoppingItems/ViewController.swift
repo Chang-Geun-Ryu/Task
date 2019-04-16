@@ -48,13 +48,11 @@ extension ViewController: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    // cell 을 재사용하여
+    // cell 을 재사용하여 생성 재사용 셀들은 커스텀 셀 뿐임으로 as! ItemCell 사용
     let cell = tableView.dequeueReusableCell(withIdentifier: "Custom", for: indexPath) as! ItemCell
-    cell.modelName = models[indexPath.row]
-    cell.imageLogo = images[indexPath.row % 5]
-    cell.seller = salePhones[indexPath.row]
-    cell.stockMax = stockMax[indexPath.row]
-    cell.saleCount.text = "\(salePhones[indexPath.row])"
+    
+    // 커스텀 셀 클래스의 setting 함수를 호출하여 셋팅
+    cell.setCell(images[indexPath.row % 5], models[indexPath.row], counting: "\(salePhones[indexPath.row])", stockMax: stockMax[indexPath.row])
     cell.delegate = self
     
     return cell
@@ -62,7 +60,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension   ViewController: PhoneSellerDelegate {
-    func salesPhone(_ cell: ItemCell, _ seller: UILabel, _ sender: UIButton) {
+    func salesPhone(_ cell: ItemCell, _ seller: UILabel) {
         if let indexPath = tableView.indexPath(for: cell) {
             
             // 한정수량 이상 증가 시키지 못하고 배경색을 red로 바꾼뒤 1초동안 animation으로 white 변화 alert
