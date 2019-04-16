@@ -45,9 +45,6 @@ final class TableViewAccessoryType: UIViewController {
     view.addSubview(tableView)
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellId")
     tableView.rowHeight = 60
-    
-    
-    
   }
 }
 
