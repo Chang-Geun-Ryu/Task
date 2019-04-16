@@ -56,6 +56,7 @@ final class ItemCell: UITableViewCell {
         phoneImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         phoneImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         phoneImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        phoneImage.trailingAnchor.constraint(equalTo: label.leadingAnchor, constant: -10).isActive = true
         phoneImage.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +66,7 @@ final class ItemCell: UITableViewCell {
         label.trailingAnchor.constraint(equalTo: saleCount.leadingAnchor, constant: -10).isActive = true
         
         saleCount.translatesAutoresizingMaskIntoConstraints = false
-        saleCount.leadingAnchor.constraint(equalTo: label.trailingAnchor).isActive = true
+        saleCount.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 10).isActive = true
         saleCount.topAnchor.constraint(equalTo: phoneImage.topAnchor).isActive = true
         saleCount.bottomAnchor.constraint(equalTo: phoneImage.bottomAnchor).isActive = true
         saleCount.trailingAnchor.constraint(equalTo: button.leadingAnchor).isActive = true
