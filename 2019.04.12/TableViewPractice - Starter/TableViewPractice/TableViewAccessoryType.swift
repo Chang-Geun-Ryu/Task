@@ -58,6 +58,9 @@ extension TableViewAccessoryType: UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath)
     cell.imageView?.image = UIImage(named: animals[indexPath.row])
     cell.accessoryType = .none
+    if let checked = animalCheck[animals[indexPath.row]] {
+        cell.accessoryType = checked ? .checkmark : .none
+    }
     return cell
   }
 }
