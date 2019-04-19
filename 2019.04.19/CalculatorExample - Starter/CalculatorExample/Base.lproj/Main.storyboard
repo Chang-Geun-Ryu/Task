@@ -277,23 +277,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="addButton" destination="Vqf-hD-aZ0" id="vGP-WS-zUc"/>
-                        <outlet property="clearButton" destination="rdP-Fm-uOu" id="hzJ-Xp-Uf7"/>
-                        <outlet property="divButton" destination="NcZ-RC-cCR" id="hY3-QD-B8Q"/>
-                        <outlet property="equlButton" destination="W83-6l-3mG" id="9y6-S2-gXb"/>
-                        <outlet property="mulButton" destination="hOo-nv-Lxc" id="Oy3-Iv-c5E"/>
-                        <outlet property="num0" destination="NrR-XQ-a6S" id="x8S-nc-jYl"/>
-                        <outlet property="num1" destination="2RG-gA-zox" id="6ay-QY-ySX"/>
-                        <outlet property="num2" destination="AAX-r8-vRG" id="qFc-6i-09k"/>
-                        <outlet property="num3" destination="lA3-cE-ODk" id="ItF-Fo-bgD"/>
-                        <outlet property="num4" destination="m8J-sz-2T9" id="pwn-gd-rF9"/>
-                        <outlet property="num5" destination="Lvq-Rj-Qo0" id="DAg-tB-aC0"/>
-                        <outlet property="num6" destination="jJ3-Pp-L66" id="k3f-hf-bBS"/>
-                        <outlet property="num7" destination="aEa-Ip-mQD" id="HTQ-Qf-wrq"/>
-                        <outlet property="num8" destination="UmS-f5-qWv" id="NCq-82-dsD"/>
-                        <outlet property="num9" destination="Asx-cF-8Cx" id="4Bo-eQ-emA"/>
                         <outlet property="result" destination="1Yl-R6-zrV" id="W1c-Lg-SUw"/>
-                        <outlet property="subButton" destination="Z9X-nL-V9A" id="gdO-2N-zHR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUJ-xH-FGF" sceneMemberID="firstResponder"/>
