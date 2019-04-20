@@ -12,14 +12,15 @@ final class ViewController: UIViewController {
     @IBOutlet weak var result: UILabel!
     
     var store: Double = 0
-    var number: Double? = 0
+    var number: Double? = nil
     var operatorClosure: ((Double, Double) -> Double)? = nil
     var addString: String = ""
-    var equalClicked = 0
     let numformat = NumberFormatter()
     
   override func viewDidLoad() {
     super.viewDidLoad()
+    result.adjustsFontSizeToFitWidth = true
+    
         numformat.numberStyle = .decimal
         numformat.minimumFractionDigits = 0
         numformat.maximumFractionDigits = 3
@@ -35,14 +36,17 @@ final class ViewController: UIViewController {
     
     func clear() {                          // 전체 초기화 function
         store = 0
-        result.text = "0"
-        equalClicked = 0
+        setResultLabel(0)
         clearoperated()
     }
     func clearoperated() {                  // 연산 후 초기화 function
         number = nil
         operatorClosure = nil
         addString = ""
+    }
+    
+    func setResultLabel(_ value: Double) {
+        result.text = numformat.string(from: value as NSNumber)!
     }
     
     func equal(equalButtonClicked: Bool) {
@@ -54,12 +58,11 @@ final class ViewController: UIViewController {
             number = store
         }
         
-        print("store: \(store), number: \(number ?? 0), equalClicked: \(equalClicked)")
-        guard store != 0, number != nil, equalClicked < 2, operatorClosure != nil else { print("FF", equalClicked); return }
+        guard store != 0, number != nil, /*equalClicked < 2,*/ operatorClosure != nil else { return }
         
-        store = operatorClosure!(store, number!)                // 계산
-        result.text = numformat.string(from: store as NSNumber) // 자릿수에 맞춰 출력
-        clearoperated()                                         // 계산후 초기화
+        store = operatorClosure!(store, number!)                    // 계산
+        setResultLabel(store)  // 자릿수에 맞춰 출력
+        clearoperated()                                             // 계산후 초기화
     }
     
     // AC button
@@ -69,9 +72,10 @@ final class ViewController: UIViewController {
     
     // 0~9 button
     @IBAction func keyNumber(_ sender: UIButton) {
+        guard addString.count < 15 else { return }
         addString += sender.titleLabel?.text ?? ""  // 숫자키 입력시 누적 시키기위하여 String 프로퍼티에 누적시켜 label에 출력
-        number = Double(addString) ?? 0
-        result.text = addString
+        number = Double(addString)
+        setResultLabel(number ?? 0)
     }
     
     // +-×÷ operator button
