@@ -58,7 +58,7 @@ final class ViewController: UIViewController {
             number = store
         }
         
-        guard store != 0, number != nil, /*equalClicked < 2,*/ operatorClosure != nil else { return }
+        guard store != 0, number != nil, operatorClosure != nil else { return }
         
         store = operatorClosure!(store, number!)                    // 계산
         setResultLabel(store)  // 자릿수에 맞춰 출력
