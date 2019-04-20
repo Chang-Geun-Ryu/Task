@@ -46,11 +46,11 @@ final class ViewController: UIViewController {
     }
     
     func equal(equalButtonClicked: Bool) {
-        if store == 0 {                     // store 프로퍼티가 0이면
+        if store == 0 {                     // store 프로퍼티가 0이면 number 프포퍼티로부터 값을 받고 number는 nil
             store = number ?? 0
             number = nil
             addString = ""
-        } else if store != 0 && number == nil, equalButtonClicked{
+        } else if store != 0 && number == nil, equalButtonClicked{ // 12 + =  결과: 12, 작동을 위한 조건
             number = store
         }
         
@@ -101,6 +101,4 @@ final class ViewController: UIViewController {
     
         equal(equalButtonClicked: true)     // =, equal 버튼 클릭으로 호출된것을 equal fucntion에 매배변수를 true로 알림
     }
-    
-    
 }
