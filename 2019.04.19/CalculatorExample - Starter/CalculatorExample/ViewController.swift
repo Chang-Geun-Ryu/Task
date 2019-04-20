@@ -33,20 +33,20 @@ final class ViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func clear() {
+    func clear() {                          // 전체 초기화 function
         store = 0
         result.text = "0"
         equalClicked = 0
         clearoperated()
     }
-    func clearoperated() {
+    func clearoperated() {                  // 연산 후 초기화 function
         number = nil
         operatorClosure = nil
         addString = ""
     }
     
     func equal(equalButtonClicked: Bool) {
-        if store == 0 {
+        if store == 0 {                     // store 프로퍼티가 0이면
             store = number ?? 0
             number = nil
             addString = ""
@@ -62,18 +62,21 @@ final class ViewController: UIViewController {
         clearoperated()                                         // 계산후 초기화
     }
     
-    @IBAction func clearAll(_ sender: UIButton) {
+    // AC button
+    @IBAction func clearAll(_ sender: UIButton) {   // AC 버튼 클릭으로 초기화 진행
         clear()
     }
     
+    // 0~9 button
     @IBAction func keyNumber(_ sender: UIButton) {
-        addString += sender.titleLabel?.text ?? ""
+        addString += sender.titleLabel?.text ?? ""  // 숫자키 입력시 누적 시키기위하여 String 프로퍼티에 누적시켜 label에 출력
         number = Double(addString) ?? 0
         result.text = addString
     }
     
+    // +-×÷ operator button
     @IBAction func keyOperator(_ sender: UIButton) {
-        switch sender.titleLabel?.text {
+        switch sender.titleLabel?.text {            // 버튼의 label.text에 따라 operatorClosure에 +-×÷ 연산자를 입력
         case "+":
             operatorClosure = {$0 + $1}
         case "-":
@@ -86,16 +89,17 @@ final class ViewController: UIViewController {
             operatorClosure = nil
         }
         
-        equal(equalButtonClicked: false)
+        equal(equalButtonClicked: false)    // 연산자 버튼 클릭으로 호출된것을 equal function에 매개변수를 false로 알림
     }
     
+    // = button
     @IBAction func equaOperatorl(_ sender: UIButton) {
-        guard operatorClosure != nil else {
+        guard operatorClosure != nil else { // =, equal 버튼 클릭시 operatorClosure가 nil 값으로 연산자를 지정하지 않았으면 초기화
             clearoperated()
             return
         }
     
-        equal(equalButtonClicked: true)
+        equal(equalButtonClicked: true)     // =, equal 버튼 클릭으로 호출된것을 equal fucntion에 매배변수를 true로 알림
     }
     
     
