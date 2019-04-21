@@ -19,7 +19,7 @@ final class ViewController: UIViewController {
     
   override func viewDidLoad() {
     super.viewDidLoad()
-    result.adjustsFontSizeToFitWidth = true
+        result.adjustsFontSizeToFitWidth = true
     
         numformat.numberStyle = .decimal
         numformat.minimumFractionDigits = 0
@@ -49,20 +49,24 @@ final class ViewController: UIViewController {
         result.text = numformat.string(from: value as NSNumber)!
     }
     
-    func equal(equalButtonClicked: Bool) {
-        if store == 0 {                     // store 프로퍼티가 0이면 number 프포퍼티로부터 값을 받고 number는 nil
-            store = number ?? 0
-            number = nil
-            addString = ""
-        } else if store != 0 && number == nil, equalButtonClicked{ // 12 + =  결과: 12, 작동을 위한 조건
-            number = store
+    func equal(equalButtonClicked: Bool,_ numberButtonClicked: Bool = false) {
+        if numberButtonClicked {
+            
+        }else {
+            if store == 0 {                     // store 프로퍼티가 0이면 number 프로퍼티로부터 값을 받고 number는 nil
+                store = number ?? 0
+                number = nil
+                addString = ""
+            } else if store != 0 && number == nil, equalButtonClicked{ // 12 + =  결과: 12, 작동을 위한 조건
+                number = store
+            }
         }
         
         guard store != 0, number != nil, operatorClosure != nil else { return }
         
-        store = operatorClosure!(store, number!)                    // 계산
-        setResultLabel(store)  // 자릿수에 맞춰 출력
-        clearoperated()                                             // 계산후 초기화
+        store = operatorClosure!(store, number!)   // 계산
+        setResultLabel(store)                      // 자릿수에 맞춰 출력
+        clearoperated()                            // 계산후 초기화
     }
     
     // AC button
@@ -76,6 +80,8 @@ final class ViewController: UIViewController {
         addString += sender.titleLabel?.text ?? ""  // 숫자키 입력시 누적 시키기위하여 String 프로퍼티에 누적시켜 label에 출력
         number = Double(addString)
         setResultLabel(number ?? 0)
+        
+        equal(equalButtonClicked: false, true)
     }
     
     // +-×÷ operator button
