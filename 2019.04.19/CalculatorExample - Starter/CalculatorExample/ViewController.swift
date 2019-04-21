@@ -50,17 +50,15 @@ final class ViewController: UIViewController {
     }
     
     func equal(equalButtonClicked: Bool,_ numberButtonClicked: Bool = false) {
-        if numberButtonClicked {
-            
-        }else {
-            if store == 0 {                     // store 프로퍼티가 0이면 number 프로퍼티로부터 값을 받고 number는 nil
-                store = number ?? 0
-                number = nil
-                addString = ""
-            } else if store != 0 && number == nil, equalButtonClicked{ // 12 + =  결과: 12, 작동을 위한 조건
-                number = store
-            }
+        
+        if store == 0, !numberButtonClicked  {                     // store 프로퍼티가 0이면 number 프로퍼티로부터 값을 받고 number는 nil
+            store = number ?? 0
+            number = nil
+            addString = ""
+        } else if store != 0 && number == nil, equalButtonClicked{ // 12 + =  결과: 12, 작동을 위한 조건
+            number = store
         }
+        
         
         guard store != 0, number != nil, operatorClosure != nil else { return }
         
