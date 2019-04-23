@@ -86,13 +86,13 @@ final class ViewController: UIViewController {
     @IBAction func keyOperator(_ sender: UIButton) {
         switch sender.titleLabel?.text {            // 버튼의 label.text에 따라 operatorClosure에 +-×÷ 연산자를 입력
         case "+":
-            operatorClosure = {$0 + $1}
+            operatorClosure = (+)
         case "-":
-            operatorClosure = {$0 - $1}
+            operatorClosure = (-)
         case "×":
-            operatorClosure = {$0 * $1}
+            operatorClosure = (*)
         case "÷":
-            operatorClosure = {$0 / $1}
+            operatorClosure = (/)
         default:
             operatorClosure = nil
         }
