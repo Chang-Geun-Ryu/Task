@@ -12,11 +12,6 @@ final class DetailViewController: UIViewController {
   weak var menu: MenuInfo?
   var imageName: String = ""
   var category = ""
-  var count: Int = 0{
-    didSet {
-      buyLabel.text = "\(count)"
-    }
-  }
   
   let imageView = UIImageView()
   let minusButton = UIButton(type: .system)
@@ -29,7 +24,7 @@ final class DetailViewController: UIViewController {
     grayView.backgroundColor = .darkGray
     view.addSubview(grayView)
     
-    imageView.image = UIImage(named: imageName)
+    imageView.image = UIImage(named: title ?? "") // 타이틀이 메뉴 이름이므로 이미지 로드
     view.addSubview(imageView)
     
     minusButton.addTarget(self, action: #selector(pushButton(_:)), for: .touchUpInside)
@@ -90,15 +85,15 @@ final class DetailViewController: UIViewController {
   
   @objc func pushButton(_ sender: UIButton) {
     switch sender {
-    case minusButton:
+    case minusButton: // (-) Button touch 메뉴 인스턴스에 접근하여 수량 -1
       menu?.minus()
-    default:
+    default:          // (+) Button touch 메뉴 인스턴스에 접근하여 수량 +1
       menu?.plus()
     }
-    showBuyLabel()
+    showBuyLabel()    // 수량 변경 label 표시
   }
   
   func showBuyLabel() {
-    buyLabel.text = "\(menu?.getQauntity() ?? 0)"
+    buyLabel.text = "\(menu?.getQauntity() ?? 0) 개"
   }
 }

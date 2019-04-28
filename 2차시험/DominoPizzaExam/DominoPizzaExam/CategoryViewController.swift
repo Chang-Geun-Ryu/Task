@@ -11,7 +11,7 @@ import UIKit
 final class CategoryViewController: UIViewController {
   let tableView = UITableView()
   
-  let menus = PizzaList()
+  let menus = PizzaList() // 메뉴 인스턴스 선언
   
   override func viewDidLoad() {
     super.viewDidLoad()

@@ -20,6 +20,7 @@ final class WishListViewController: UIViewController {
     tableView.dataSource = self
     view.addSubview(tableView)
     
+    // 탭바 컨트롤러 델리게이트 사용
     tabBarController?.delegate = self
     
     naviSetting()
@@ -27,6 +28,7 @@ final class WishListViewController: UIViewController {
     loadOrders()
   }
 
+  // 네비게이션 바 셋팅
   func naviSetting() {
     self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "목록 지우기", style: .done, target: self, action: #selector(deleteList(_:)))
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "주문", style: .done, target: self, action: #selector(order(_:)))
@@ -40,10 +42,12 @@ final class WishListViewController: UIViewController {
     tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
   }
   
+  // 주문 수량이 1 이상인 메뉴 검색 및 추출
   func loadOrders() {
     orders = menu?.menus.map { $0.value.filter { $0.getQauntity() > 0} } . flatMap {$0}
   }
   
+  // 주문 list message 생성
   func getOrderList() -> String {
     var listOrder = ""
     var totalPrice = 0
@@ -56,11 +60,10 @@ final class WishListViewController: UIViewController {
   }
   
   func orderReset() {
-    orders?.forEach { $0.setZeroOrderQuantity() }
-    orders?.removeAll()
+    orders?.forEach { $0.setZeroOrderQuantity() } // 주문 수량 초기화
+    orders?.removeAll()                           // 주문 리스트 초기화
     tableView.reloadData()
   }
-  
   
   @objc func deleteList(_ sender: UIBarButtonItem) {
     orderReset()
@@ -93,14 +96,16 @@ extension WishListViewController: UITableViewDataSource {
   }
 }
 
+/***********************************************************
+ 수정 정보 초기화를 위한 탭바 컨트롤러 델리게이트
+ **********************************************************/
 extension WishListViewController: UITabBarControllerDelegate {
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
     switch viewController.children.last {
-    case is WishListViewController:
+    case is WishListViewController: // wish list 선택시 셋팅
       loadOrders()
       tableView.reloadData()
-    case let view as DetailViewController:
-      print(5)
+    case let view as DetailViewController: // detailview 선택시 셋팅
       view.showBuyLabel()
     default:
       break

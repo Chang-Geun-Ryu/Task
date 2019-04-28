@@ -11,7 +11,7 @@ import UIKit
 final class ProductViewController: UIViewController {
   weak var menus: PizzaList?
   let tableView = UITableView()
-  var pizzas: [(String, Int)] = []
+  var pizzas: [(String, Int)] = [] // 메뉴리스트 및 가격 정보 저장 프로퍼티
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,6 +22,7 @@ final class ProductViewController: UIViewController {
     
     autoLayout()
     
+    // 선택할 메뉴 리스트와 가격 정보 메뉴 인스턴스에서 추출
     pizzas = menus?.menus[self.title ?? ""]?.map { ($0.menuName, $0.menuPrice)} ?? []
   }
   
@@ -51,10 +52,9 @@ extension ProductViewController: UITableViewDataSource {
 extension ProductViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let dVC = DetailViewController()
-    dVC.title = pizzas[indexPath.row].0
-    dVC.category = self.title ?? ""
-    dVC.imageName = pizzas[indexPath.row].0
-    dVC.menu = menus?.menus[self.title ?? ""]?[indexPath.row]
+    dVC.title = pizzas[indexPath.row].0     // 선택된 메뉴 이름
+    dVC.category = self.title ?? ""         // 현재 메뉴 카테고리
+    dVC.menu = menus?.menus[self.title ?? ""]?[indexPath.row]     // 선택된 메뉴 인스턴스 주소 복사
     navigationController?.pushViewController(dVC, animated: true)
   }
 }

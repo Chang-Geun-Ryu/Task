@@ -20,8 +20,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let cVC = CategoryViewController()
     let wVC = WishListViewController()
-    cVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-    wVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+    cVC.tabBarItem = UITabBarItem(title: "Domino's", image: nil, tag: 0)
+    wVC.tabBarItem = UITabBarItem(title: "Wish List", image: nil, tag: 1)
+    // 메뉴 정보 인스턴스 wish list에 복사
     wVC.menu = cVC.menus
     
     let navi = UINavigationController(rootViewController: cVC)
