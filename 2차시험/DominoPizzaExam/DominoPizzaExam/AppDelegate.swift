@@ -22,11 +22,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     let wVC = WishListViewController()
     cVC.tabBarItem = UITabBarItem(title: "Domino's", image: nil, tag: 0)
     wVC.tabBarItem = UITabBarItem(title: "Wish List", image: nil, tag: 1)
+    
     // 메뉴 정보 인스턴스 wish list에 복사
     wVC.menu = cVC.menus
     
     let navi = UINavigationController(rootViewController: cVC)
     let navi2 = UINavigationController(rootViewController: wVC)
+    navi2.title = "Wish List"
     let tabBarController = UITabBarController()
     tabBarController.setViewControllers([navi, navi2], animated: true)
     
