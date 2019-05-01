@@ -43,7 +43,6 @@ class SecondViewController: UIViewController {
     label.backgroundColor = section ? UIColor.darkGray : UIColor.white
     scrollView.addSubview(label)
     
-    
     label.translatesAutoresizingMaskIntoConstraints = false
     
     if labels.count == 1 {

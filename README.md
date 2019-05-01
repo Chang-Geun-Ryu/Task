@@ -1,5 +1,3 @@
-# Task
-
 ## Task
 
 ------
@@ -106,8 +104,10 @@
 
 - ShoppingItems - AutoLayout, Frame
 
-***
+------
 
-* 20190419_금:[과제] 계산기
+- 20190419_금:[과제] Calculator - TableView 계산기 구현
 
-1. 계산기
+------
+
+- 20190422_월[과제] Higher-order Function Practice 3
