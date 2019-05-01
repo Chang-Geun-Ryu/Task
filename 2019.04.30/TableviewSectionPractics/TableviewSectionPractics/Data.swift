@@ -1,9 +1,9 @@
 //
 //  Data.swift
-//  DominoPizzaExam
+//  TableviewSectionPractics
 //
-//  Created by CHANGGUEN YU on 26/04/2019.
-//  Copyright © 2019 Kira. All rights reserved.
+//  Created by CHANGGUEN YU on 01/05/2019.
+//  Copyright © 2019 CHANGGUEN YU. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ import Foundation
  **********************************************************/
 final class PizzaList {
   let cateforyTitles = ["슈퍼시드", "프리미엄", "클래식", "음료", "사이드디시", "피클소스"]
-
+  
   private let sideMenu = ["딸기 슈크림","슈퍼곡물 치킨","애플 크러스트 디저트","치킨퐁듀 그라탕","퀴노아 치킨 샐러드","포테이토 순살치킨"]
   private let superSeed = ["글램핑 바비큐","알로하 하와이안","우리 고구마","콰트로 치즈 퐁듀"]
   private let drinks = ["미닛메이드 스파클링 청포도","스프라이트","코카콜라 제로","코카콜라"]
