@@ -26,7 +26,9 @@ final class PizzaList {
   init() {
     var manuMaker: [MenuInfo] = []
     
-    sideMenu.forEach { manuMaker.append(MenuInfo(menuName: $0, menuPrice: 7000)) }
+    
+    
+    sideMenu.forEach { manuMaker.append( MenuInfo(menuName: $0, menuPrice: 7000) ) }
     menus.updateValue(manuMaker, forKey: "사이드디시")
     manuMaker.removeAll()
     
