@@ -75,12 +75,6 @@ class GetURLViewController: UIViewController {
     super.viewDidLoad()
     setupViews()
     setupConstraints()
-    print("viewDidLoad")
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    
   }
   
   private func setupViews() {
@@ -130,7 +124,9 @@ class GetURLViewController: UIViewController {
   @objc func didTapNextButton(_ sender: UIButton) {
     
     guard URLTextField.text == "error" else { return }
+    
     sorryLabel.alpha = 0.7
+    
     UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: [], animations: {
       UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.33, animations: {
         self.actURLTextViewLeadingConst.constant -= 10
@@ -157,7 +153,9 @@ extension GetURLViewController: UITextFieldDelegate {
     guard range.location < 25 else { return false }
     let text = textField.text ?? ""
     let textSize = (text as NSString).size(withAttributes: [.font: URLTextField.font!])
+    
     actLabelLeadingConst.constant = range.length == 1 ? textSize.width - 8 : textSize.width + 8
+    
     print("shouldChangeCharactersIn", textSize.width + 8, range, range.location)
     sorryLabel.alpha = 0
     nextButton.isSelected = range.location == 0 && range.length == 1 ? false : true

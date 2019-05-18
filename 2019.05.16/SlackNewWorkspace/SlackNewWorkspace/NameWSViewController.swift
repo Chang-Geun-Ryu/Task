@@ -28,7 +28,7 @@ class NameWSViewController: UIViewController {
     button.addTarget(self, action: #selector(didTapCloseButton(_:)), for: .touchUpInside)
     return button
   }()
-  
+
   private let wsNameTextField: UITextField = {
     let textField = UITextField()
     let attrString = NSAttributedString(
@@ -88,6 +88,7 @@ class NameWSViewController: UIViewController {
     closeButton.layout
       .leading(constant: 16)
       .centerY(equalTo: nextButton.centerYAnchor)
+  
     wsNameTextField.layout
       .leading(constant: 16)
       .trailing(constant: -16)
@@ -106,7 +107,9 @@ class NameWSViewController: UIViewController {
     floatingCenterYConst.isActive = true
     
     activityIndicatorView.layout.centerY(equalTo: wsNameTextField.centerYAnchor)
+    
     indicatorViewLeadingConst = activityIndicatorView.leadingAnchor.constraint(equalTo: wsNameTextField.leadingAnchor)
+    
     indicatorViewLeadingConst.isActive = true
   }
   
@@ -149,6 +152,7 @@ extension NameWSViewController: UITextFieldDelegate {
   }
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard range.location < 25 else { return false }
     let text = textField.text ?? ""
     let replacedText = (text as NSString).replacingCharacters(in: range, with: string)
     nextButton.isSelected = !replacedText.isEmpty
