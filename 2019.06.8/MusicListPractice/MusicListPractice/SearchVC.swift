@@ -15,6 +15,7 @@ class SearchVC: UIViewController {
   
   private var songs: Songs?
   
+  
   private let searchController = UISearchController(searchResultsController: nil)
 
   override func viewDidLoad() {
@@ -40,6 +41,21 @@ class SearchVC: UIViewController {
     tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
     tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+  }
+  
+  private func searchMusic(_ searchText: String) {
+    
+    AF.request("https://itunes.apple.com/search?media=music&entity=song&term=" + searchText)
+      .validate()
+      .responseDecodable { [weak self] (response: DataResponse<Songs>) in
+        switch response.result {
+        case .success(let value):
+          self?.songs = value
+          self?.tableView.reloadData()
+        case .failure(let error):
+          print(error.localizedDescription)
+        }
+    }
   }
   
   private func searchApiRequest(_ searchText: String) {
@@ -158,7 +174,8 @@ extension SearchVC: UISearchBarDelegate {
   func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
     guard let text = searchBar.text else { return false}
 //    searchApiRequest(text)
-    ex(text)
+//    ex(text)
+    searchMusic(text)
     return true
   }
 }
