@@ -192,8 +192,6 @@ final class WeatherVC: UIViewController {
         let skyName = sky["name"] else { return print(" ok !")}
       
       DispatchQueue.main.async {
-        
-        print("aaaaaa")
         self.weatherHeaderView.setWeatherInfo(temperature: temperature, temperatureMin: temperatureMin, temperatureMax: temperatureMax, skyName: skyName, image: skyImage)
         
         self.topView.setLocation(address: city + " " + county + " " + village)
