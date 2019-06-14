@@ -25,10 +25,9 @@ final class TopView: UIView {
     configure()
     print(frame)
     
-//    print("superview",superview)
   }
-  override func didMoveToSuperview() {
-    print("super:\(superview)")
+  override func didMoveToSuperview() {  // superview에
+//    print("super:\(superview)")
   }
   
   required init?(coder aDecoder: NSCoder) {
