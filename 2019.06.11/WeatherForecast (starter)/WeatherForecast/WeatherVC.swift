@@ -144,7 +144,7 @@ final class WeatherVC: UIViewController {
   
   private func getBackgroundImage() -> UIImage {
     let image = UIImage(named: "\(imageCounter)")!
-    print("image",imageCounter)
+//    print("image",imageCounter)
     imageCounter = imageCounter < 4 ? imageCounter + 1 : 1
     return image
   }
@@ -219,7 +219,7 @@ final class WeatherVC: UIViewController {
         var time = ""
         
         let after = now + TimeInterval(3600 * (index * 3 + 4))
-        print("now: \(after), index: \(index), calc: \((index * 3 + 4))")
+//        print("now: \(after), index: \(index), calc: \((index * 3 + 4))")
         self?.getTimeAfter(now: after, dateFormatter: dateFormatter, dayString: &day, timeString: &time)
         self?.fcstThreeHour.append((temp + "˚", weatherImage, weatherString, day, time))
       }
@@ -288,12 +288,12 @@ extension WeatherVC: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let current = locations.last else { return print("locations.last not found")}
     
-    if (abs(current.timestamp.timeIntervalSinceNow) < 1) {
+    if (abs(current.timestamp.timeIntervalSinceNow) < 0.05) {
       // span 단위는 1도
       // 경도 1도는 약 111 km
       // 위도 1도는 위도에 따라 변함 : 적도 (111km) ~ 극지방 (0 km)
       let coordnate = current.coordinate
-      print("called CLLocationManagerDelegate lat: \(coordnate.latitude), lon: \(coordnate.longitude)")
+//      print("called CLLocationManagerDelegate lat: \(coordnate.latitude), lon: \(coordnate.longitude)")
       
       latitude = "\(coordnate.latitude)"
       longitude = "\(abs(coordnate.longitude))"

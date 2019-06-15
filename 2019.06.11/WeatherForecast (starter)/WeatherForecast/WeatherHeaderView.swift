@@ -92,8 +92,6 @@ final class WeatherHeaderView: UIView {
   }
   
   func setWeatherInfo(temperature: String, temperatureMin: String, temperatureMax: String, skyName: String, image: String) {
-    
-    print(temperature)
     self.temperatureLabel.text = temperature + "˚"
     self.weaderMinMaxLabel.text = "⤓ \(temperatureMin + "˚") ⤒ \(temperatureMax + "˚")"
     self.skyNameLabel.text = skyName

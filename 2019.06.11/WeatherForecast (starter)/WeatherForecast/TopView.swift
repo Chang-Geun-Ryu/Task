@@ -23,7 +23,7 @@ final class TopView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
-    print(frame)
+//    print(frame)
     
   }
   override func didMoveToSuperview() {  // superview에

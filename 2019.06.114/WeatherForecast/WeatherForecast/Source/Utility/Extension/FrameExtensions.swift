@@ -30,7 +30,7 @@ extension UIView {
     get { return frame.origin.y }
     set { frame.origin.y = newValue }
   }
-  var width: CGFloat {
+    var width: CGFloat {
     get { return frame.width }
     set { frame.size.width = newValue }
   }
