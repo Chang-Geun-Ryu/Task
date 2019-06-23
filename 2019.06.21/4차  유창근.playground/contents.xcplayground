@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='rendered'>
+    <pages>
+        <page name='1번 문제 (손코딩 내용)'/>
+        <page name='1번 문제 (최종 결과)'/>
+        <page name='2번 문제 (손코딩 내용)'/>
+        <page name='2번 문제 (최종 결과)'/>
+        <page name='3번 문제 (손코딩 내용)'/>
+        <page name='3번 문제 (최종 결과)'/>
+    </pages>
+</playground>
