@@ -11,7 +11,7 @@ import Foundation
 // 실제 API 통신용 클래스
 final class ForecastService: ForecastServiceType {
   private let baseUrl = "https://api2.sktelecom.com"
-  private let appKey = "앱 키 입력"
+  private let appKey = "e4fcc3d2-a5f3-4615-9bed-04ac394442e0"
   
   
   func fetchCurrentForecast(

@@ -80,7 +80,7 @@ final class WeatherCasterView: UIView {
       width - (UI.xMargin * 2), safeAreaInsets.top + UI.topInfoViewHeight
     )
     locationLabel.frame = CGRect.make(
-      0, safeAreaInsets.top,
+      0, safeAreaInsets.top + 30,
       topInfoView.width, UI.locationLabelHeight
     )
     timeLabel.frame = CGRect.make(
